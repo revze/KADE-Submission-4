@@ -83,4 +83,9 @@ class FavoriteMatchFragment : Fragment() {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        showFavoriteMatch()
+    }
 }

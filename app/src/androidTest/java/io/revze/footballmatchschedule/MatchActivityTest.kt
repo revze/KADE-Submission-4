@@ -28,13 +28,13 @@ class MatchActivityTest {
         onView(withId(tab_layout)).check(matches(isDisplayed()))
         val nextMatchMatcher = Matchers.allOf(withText("Next Match"), isDescendantOfA(withId(R.id.tab_layout)))
         onView(nextMatchMatcher).perform(click())
-        SystemClock.sleep(1000)
+        Thread.sleep(1000)
 
         onView(withId(rv_next_match)).check(matches(isDisplayed()))
         onView(withId(rv_next_match)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(9))
         onView(withId(rv_next_match)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(9, click()))
 
-        SystemClock.sleep(1000)
+        Thread.sleep(1000)
         onView(withId(add_to_favorite)).check(matches(isDisplayed()))
         onView(withId(add_to_favorite)).perform(click())
         onView(withText(R.string.success_added_favorite_match)).check(matches(isDisplayed()))
@@ -45,10 +45,6 @@ class MatchActivityTest {
         val favoriteMatcher = Matchers.allOf(withText("Favorites"), isDescendantOfA(withId(R.id.tab_layout)))
         onView(favoriteMatcher).perform(click())
 
-        onView(withId(sr_favorite_match)).check(matches(isDisplayed()))
-        onView(withId(sr_favorite_match)).perform(swipeDown())
-        SystemClock.sleep(1000)
-
         onView(withId(rv_favorite_match)).check(matches(isDisplayed()))
         onView(withId(rv_favorite_match)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
 
@@ -58,7 +54,6 @@ class MatchActivityTest {
 
         pressBack()
 
-        onView(withId(sr_favorite_match)).check(matches(isDisplayed()))
-        onView(withId(sr_favorite_match)).perform(swipeDown())
+        Thread.sleep(1000)
     }
 }
